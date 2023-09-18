@@ -1,0 +1,58 @@
+@hostname = http://localhost:8000
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2FkbWluL2F1dGgiLCJpYXQiOjE2OTA0NDc1ODYsImV4cCI6MTY5MDQ1MTE4NiwibmJmIjoxNjkwNDQ3NTg2LCJqdGkiOiJlWUZKc1M1SEFOZ3ltOUFuIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.9q4uG_-6moLQ8izKAVqmPt21aHlERnXxGyTmk9CRQRw
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJyb2xlIjoxLCJsb2NhdGlvbiI6MCwiaWF0IjoxNjY2OTU2MTg4LCJleHAiOjQ2NjY5NTYxODh9.-MKOr7FBjbySpLhlCymMgtYmoiuz1mBll4JcbGpbQxM
+@path = /api/story
+
+
+### story Add
+
+post {{hostname}}{{path}}/add 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "image_1":Before Img,
+    "image_2": After Img,
+    "name":"sample",
+    "age":2,
+    "desc":"sample",
+    "point_1":"sample",
+    "point_2":"sample",
+    "point_3":"sample",
+    "point_4":"sample"
+}
+
+### story update
+
+post {{hostname}}{{path}}/update 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "storyId":1,
+    "image_1":Before Img,
+    "image_2": After Img,
+    "name":"sample",
+    "age":2,
+    "desc":"sample",
+    "point_1":"sample",
+    "point_2":"sample",
+    "point_3":"sample",
+    "point_4":"sample"
+}
+
+
+### story list
+
+get {{hostname}}{{path}}/list 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+
+### story list
+
+get {{hostname}}{{path}}/view 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}

@@ -1,0 +1,68 @@
+@hostname = http://localhost:8000
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjk1MDQ0MTI3LCJleHAiOjE2OTUwNDc3MjcsIm5iZiI6MTY5NTA0NDEyNywianRpIjoiazdrajVqZm5SS1dsMTdCcyIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.HSFj6jxJpBRiHt_eaDUqPKPKCLpooIFy6W95_wgjsOI
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJyb2xlIjoxLCJsb2NhdGlvbiI6MCwiaWF0IjoxNjY2OTU2MTg4LCJleHAiOjQ2NjY5NTYxODh9.-MKOr7FBjbySpLhlCymMgtYmoiuz1mBll4JcbGpbQxM
+@path = /api/therapy
+
+
+### therapy Add
+
+post {{hostname}}{{path}}/add 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "image_1":Before Img,
+    "image_2": After Img,
+    "name":"sample",
+    "age":2,
+    "desc":"sample",
+    "point_1":"sample",
+    "point_2":"sample",
+    "point_3":"sample",
+    "point_4":"sample"
+}
+
+### therapy update
+
+post {{hostname}}{{path}}/update 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "therapyId":1,
+    "image_1":Before Img,
+    "image_2": After Img,
+    "name":"sample",
+    "age":2,
+    "desc":"sample",
+    "point_1":"sample",
+    "point_2":"sample",
+    "point_3":"sample",
+    "point_4":"sample"
+}
+
+
+### therapy list
+
+post {{hostname}}{{path}}/search 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "search":""
+}
+
+
+### therpy search
+
+get {{hostname}}{{path}}/list 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+### therapy list
+
+get {{hostname}}{{path}}/view 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}

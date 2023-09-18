@@ -1,0 +1,45 @@
+@hostname = http://localhost:8000
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2FkbWluL2F1dGgiLCJpYXQiOjE2OTAwODI3MjEsImV4cCI6MTY5MDA4NjMyMSwibmJmIjoxNjkwMDgyNzIxLCJqdGkiOiJ2VEN0Yzc0Zm5IQ2J6Y3JrIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.PBeeCBppz3EhjtMLVDVs9lzkGiKBg388PjuOsnq6_YQ
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJyb2xlIjoxLCJsb2NhdGlvbiI6MCwiaWF0IjoxNjY2OTU2MTg4LCJleHAiOjQ2NjY5NTYxODh9.-MKOr7FBjbySpLhlCymMgtYmoiuz1mBll4JcbGpbQxM
+@path = /api/setting
+
+
+### setting Add
+
+post {{hostname}}{{path}}/update 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "data":[
+        {
+            "key": "about_section_01",
+            "value": {
+                "title": "test",
+                "description": "test",
+                "image": "test"
+            }
+        },
+        {
+            "key": "about_section_2",
+            "value": {
+                "title": "test",
+                "description": "test",
+                "image": "test"
+            }
+        }
+    ]
+}
+
+
+### setting list
+
+post {{hostname}}{{path}}/list
+Content-Type: application/json
+cookie: admin={{accessToken}}
+
+{
+    "data":["home_section_04", "about_section_2"]
+}

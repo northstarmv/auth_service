@@ -1,0 +1,20 @@
+@hostname = http://localhost:8000
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2FkbWluL2F1dGgiLCJpYXQiOjE2OTAzNzIzMDUsImV4cCI6MTY5MDM3NTkwNSwibmJmIjoxNjkwMzcyMzA1LCJqdGkiOiJmbjVZODVxaUZQcmFxME9BIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.D-dmZP3OJWIDqxtSCybN9hyCJ1h0nq8dhxpqzz_o0Mo
+
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJyb2xlIjoxLCJsb2NhdGlvbiI6MCwiaWF0IjoxNjY2OTU2MTg4LCJleHAiOjQ2NjY5NTYxODh9.-MKOr7FBjbySpLhlCymMgtYmoiuz1mBll4JcbGpbQxM
+@path = /api/status
+
+
+### setting Add
+
+post {{hostname}}{{path}}/change 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "status": 2,
+    "tableId": 2,
+    "resultId": 1
+}
+

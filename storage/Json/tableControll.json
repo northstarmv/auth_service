@@ -1,0 +1,308 @@
+{
+    "1": {
+        "table": "user",
+        "deleteAccess": {
+            "1": {
+                "check": "user"
+            }
+        },
+        "statusAccess": {
+            "1": {
+                "check": "user",
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "2": {
+        "table": "success_stories",
+        "deleteAccess": {
+            "admin": {}
+        },
+        "statusAccess": {
+            "admin": {
+                "status": [
+                    1,2
+                ]
+            }
+        }
+    },
+    "3": {
+        "table": "site_ads",
+        "deleteAccess": {
+            "admin": {}
+        },
+        "statusAccess": {
+            "admin": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "4": {
+        "table": "previous__projects",
+        "deleteAccess": {
+            "admin": {}
+        },
+        "statusAccess": {
+            "admin": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    
+    "5": {
+        "table": "product_brand",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "6": {
+        "table": "blog_category",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "7": {
+        "table": "newsletter",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "8": {
+        "table": "measurement",
+        "deleteAccess": {
+            "1": {
+                "after": "measurement"
+            }
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "9": {
+        "table": "feature",
+        "deleteAccess": {
+            "1": {},
+            "16": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "10": {
+        "table": "review",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "11": {
+        "table": "faq",
+        "deleteAccess": {
+            "1": {}
+        }
+    },
+    "12": {
+        "table": "story",
+        "deleteAccess": {
+            "1": {}
+        }
+    },
+    "13": {
+        "table": "growing_data",
+        "deleteAccess": {
+            "1": {}
+        }
+    },
+    "14": {
+        "table": "blog",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "15": {
+        "table": "country",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "16": {
+        "table": "state",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "17": {
+        "table": "city",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "18": {
+        "table": "car",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+    },
+    "19": {
+        "table": "contact",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "20": {
+        "table": "newsletter",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "21": {
+        "table": "help_center",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "22": {
+        "table": "blog_comment",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "23": {
+        "table": "property",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+    }
+}

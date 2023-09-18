@@ -1,0 +1,49 @@
+@hostname = http://localhost:8000
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjk0OTEzMjc5LCJleHAiOjE2OTQ5MTY4NzksIm5iZiI6MTY5NDkxMzI3OSwianRpIjoieHR4TFRyNm5ITUtwaUtOYiIsInN1YiI6IjUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.XExnrqg0p14TU8pPv4MIgIIqgPYtJc6P6ZkBXTKpnCU
+@path = /api/payments
+
+
+### new  meeting
+
+post {{hostname}}{{path}}/subscribe-now
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "amount":3
+}
+
+### Reserved times
+
+post {{hostname}}{{path}}/reserved-times 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "therapy_id":2,
+    "apt_date":"2002-07-03"
+}
+
+### my meetings
+
+get {{hostname}}{{path}}/my-meetings
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+
+### new trainer client meeting
+
+post {{hostname}}{{path}}/new-trainer-client-meeting 
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title":"fdfsf",
+    "description":"fsff",
+    "clients" : [3,3],
+    "trainer_id": 2,
+    "start_time":"19.00.00"
+}
+
+

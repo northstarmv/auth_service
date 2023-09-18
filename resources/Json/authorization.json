@@ -1,0 +1,242 @@
+{
+    "setting": {
+        "update": [
+            "admin"
+        ],
+        "list": [
+            "admin"
+        ],
+        "details": [
+            1
+        ]
+    },
+    "story": {
+        "add": [
+            "admin"
+        ],
+        "update": [
+            "admin"
+        ],
+        "list": [
+            "admin"
+        ]
+    },
+    "siteAd": {
+        "add": [
+            "admin"
+        ],
+        "update": [
+            "admin"
+        ],
+        "list": [
+            "admin"
+        ],
+        "order_list": [
+            "admin"
+        ]
+    },
+    "previousProject": {
+        "add": [
+            "admin"
+        ],
+        "update": [
+            "admin"
+        ],
+        "list": [
+            "admin"
+        ],
+        "view": [
+            1
+        ],
+        "mainImage": [
+            1
+        ],
+        "thumbnailImage": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ]
+    },
+    "attribute": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "view": [
+            1
+        ]
+    },
+    "attributeTerm": {
+        "add": [
+            1,
+            16
+        ],
+        "edit": [
+            1,
+            16
+        ],
+        "list": [
+            1,
+            16
+        ],
+        "view": [
+            1,
+            16
+        ]
+    },
+    "therapy": {
+        "add": [
+            "admin"
+        ],
+        "list": [
+            "admin"
+        ],
+        "update": [
+            "admin","therapy"
+        ],
+        "delete": [
+            "admin"
+        ],
+        "search": [
+            "client"
+        ],
+        "getTherapy": [
+            "therapy"
+        ]
+    },"meeting": {
+        "add": [
+            "client"
+        ],"reserved_time": [
+            "client"
+        ],"my_meetings": [
+            "client"
+        ]
+    },
+    "image": {
+        "add": [
+            "admin"
+        ]
+    },
+    "flight": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "view": [
+            1
+        ],
+        "request_add": [
+            1
+        ],
+        "request_list": [
+            1
+        ]
+    },
+    "clients": {
+        "delete": [
+            "1"
+        ],
+        "delete_image": [
+            1
+        ]
+    },
+    "holiday_types": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "view": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ]
+    },
+    "destination_package": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "mainImage": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ],
+        "random_destination_package": [
+            1
+        ]
+    },
+    "cruise_package": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "mainImage": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ]
+    },
+    "long_haul_package": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "mainImage": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ]
+    },
+    "package_holiday_type": {
+        "add": [
+            1
+        ],
+        "edit": [
+            1
+        ],
+        "list": [
+            1
+        ],
+        "mainImage": [
+            1
+        ],
+        "breadcrumbImage": [
+            1
+        ]
+    }
+}
