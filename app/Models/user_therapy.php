@@ -24,4 +24,9 @@ class user_therapy extends Model
     {
         return $this->hasMany(Therapy_Qualification::class,'therapy_id','therapy_Id');
     }
+
+    public function therapy__meetings():HasMany
+    {
+        return $this->hasMany(Therapy_Meeting::class,'therapy_id','id');
+    }
 }

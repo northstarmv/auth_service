@@ -34,6 +34,8 @@ class TherapyController extends Controller
                 'password' => 'required|string|min:8|max:100',
                 'phone' => 'required|string|unique:users|phoneValidate',
                 'nic' => 'required|string|unique:users|min:1|max:50|xssPrevent',
+                'address' => 'required|string|min:1|max:300|xssPrevent',
+                'city' => 'required|string|min:1|max:100|xssPrevent',
                 'gender' => 'required|string|min:1|max:10|xssPrevent',
                 'country' => 'required|string|min:1|max:10|xssPrevent',
                 'birthday' => 'required|date',
@@ -84,7 +86,7 @@ class TherapyController extends Controller
                     'phone' => $request->get('phone'),
                     'gender' =>$request->get('gender'),
                     'birthday' => Date::parse($request->get('birthday')),
-                    'address' => 'N/A',
+                    'address' => $request->get('address'),
                     'country_code' => $request->get('country'),
                     'currency' => 'N/A',
                 ]);
@@ -103,7 +105,8 @@ class TherapyController extends Controller
                     'hourly_rate' => $request->get('hourly_rate'),
                     'paying_type' => $request->get('paying_type'),
                     'session_rate' => $request->get('session_rate'),
-                    'session_duration' => $request->get('session_duration')
+                    'session_duration' => $request->get('session_duration'),
+                    'city' => $request->get('city')
                 ]);
                 
 
@@ -187,7 +190,7 @@ class TherapyController extends Controller
     {
         try {
             $stories =user_therapy::with('therapy_working_hours')->with('therapy__qualifications')
-            ->select('users.id as user_id','users.nic as nic_no', 'users.name', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration','users.country_code','users.birthday', 'users.gender',)
+            ->select('users.id as user_id','users.nic as nic_no', 'users.name','users.address', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.city', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration','users.country_code','users.birthday', 'users.gender',)
             ->join('users', 'users.id', '=', 'user_therapies.user_id')
             ->where('users.role', '=', 'therapy')
             ->get();
@@ -221,10 +224,12 @@ class TherapyController extends Controller
                 'gender' => 'required|string|min:1|max:10|xssPrevent',
                 'country' => 'required|string|min:1|max:10|xssPrevent',
                 'birthday' => 'required|date',
+                'city' => 'required|string|min:1|max:100|xssPrevent',
                 'hourly_rate' => 'required_if:paying_type,1,|numeric|nullable',
                 'session_duration' => 'required_if:paying_type,2,|numeric|nullable',
                 'session_rate' => 'required_if:paying_type,2,|numeric|nullable',
                 'password' => 'nullable|string|min:8|max:100',
+                'address' => 'required|string|min:1|max:300|xssPrevent',
                 'phone' => ['required','string','phoneValidate',Rule::unique('users')->ignore($request->get('userId'), 'id')],
                 'nic' => ['required','string',Rule::unique('users')->ignore($request->get('userId'), 'id')],
                 'working_time' => 'array|required_if:working_type,2',
@@ -269,6 +274,7 @@ class TherapyController extends Controller
                     'nic' => $request->get('nic'),
                     'phone' => $request->get('phone'),
                     'gender' =>$request->get('gender'),
+                    'address' =>$request->get('address'),
                     'birthday' => Date::parse($request->get('birthday')),
                     'country_code' => $request->get('country'),
                 ]);
@@ -284,7 +290,8 @@ class TherapyController extends Controller
                     'hourly_rate' => $request->get('hourly_rate'),
                     'paying_type' => $request->get('paying_type'),
                     'session_rate' => $request->get('session_rate'),
-                    'session_duration' => $request->get('session_duration')
+                    'session_duration' => $request->get('session_duration'),
+                    'city' => $request->get('city')
                 ]);
 
                 therapy_working_hours::where('therapy_id', $request->get('therapyId'))->delete();
@@ -401,19 +408,55 @@ class TherapyController extends Controller
                 if(!$request->has('search')){ $request->input('search', ''); } 
                 
                 $therpies =user_therapy::with('therapy_working_hours')->with('therapy__qualifications')
-                    ->select('users.id as user_id','users.nic as nic_no', 'users.name', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration')
+                    ->select('users.id as user_id','users.avatar_url','users.address','users.city','users.nic as nic_no', 'users.name', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration')
                     ->join('users', 'users.id', '=', 'user_therapies.user_id')
                     ->where('users.role', '=', 'therapy')
                     ->where('users.name', 'LIKE', '%' . $request->get('search'). '%')
-                    ->get();
- 
+                    ->withCount(['therapy__meetings' => function ($query) {
+                        $query->where('status', 1);
+                    }])->get();
+
+                if( !$therpies ){
+                   
+                    return response()->json(
+                        [
+                            ResponseHelper::error("0500")
+                        ], 200
+                    );
+                }
+
+                if(count($therpies) == 0){
+
                     return response()->json(
                         ResponseHelper::success_app("200",  $therpies
                         ,"success")
                             
                     );
+
+                }
+
+                $therapiesWithMeetingCount = $therpies->map(function ($therapy) {
+                    $workload = 1;
+                    if( intval($therapy->therapy__meetings_count) > 20){
+                        $workload = 3;
+                    }else if( intval($therapy->therapy__meetings_count) > 10){
+                        $workload = 2;
+                    }else{
+                        $workload = 1;
+                    }
+
+                    $therapy->workload = $workload;
+                    return $therapy;
+                });
+ 
+                return response()->json(
+                    ResponseHelper::success_app("200",  $therapiesWithMeetingCount
+                    ,"success")
+                        
+                );
                 
              }catch  (\Exception $e) {
+                error_log($e);
                  return response()->json(
                      [
                          ResponseHelper::error("0000",$e)
@@ -437,17 +480,17 @@ class TherapyController extends Controller
             if(!$request->has('search')){ $request->input('search', ''); } 
             
             $therapy =user_therapy::with('therapy_working_hours')->with('therapy__qualifications')
-            ->select('users.id as user_id','users.nic as nic_no', 'users.name', 'users.avatar_url', 'users.nic', 'users.country_code','users.birthday', 'users.gender',  'users.email','users.role', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration')
+            ->select('users.id as user_id', 'users.address', 'users.nic as nic_no', 'users.name', 'users.avatar_url', 'users.nic', 'users.country_code','users.birthday', 'users.gender',  'users.email','users.role', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration')
             ->join('users', 'users.id', '=', 'user_therapies.user_id')
             ->where('users.role', '=', 'therapy')
             ->where('users.id', '=', $request->auth->id)
             ->first();
 
-            return response()->json(
-                        ResponseHelper::success_app("200",  $therapy
-                        ,"success")
-                            
-                    );
+            return response()->json([
+                ResponseHelper::success("200", [
+                    'domain' => env('AWS_URL'),
+                    'result' => $therapy
+                ],"success")]);
             
          }catch  (\Exception $e) {
              return response()->json(
