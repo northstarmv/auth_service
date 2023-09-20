@@ -1,6 +1,6 @@
 @hostname = http://localhost:8000/
 # @hostname = https://finder.similater.com/car
-@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvL2FwaS9sb2dpbiIsImlhdCI6MTY5NTEzNDkzNSwiZXhwIjoxNjk1MTM4NTM1LCJuYmYiOjE2OTUxMzQ5MzUsImp0aSI6IkRKRHZRcHpKUXJMcDdEc20iLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.ch9Nx0etJCKoBqFa8W9YUXL_5zwZ1-DVUIAvS-9eOr4
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvL2FwaS9sb2dpbiIsImlhdCI6MTY5NTIyMzU5NywiZXhwIjoxNzI0NzIyMzU5NywibmJmIjoxNjk1MjIzNTk3LCJqdGkiOiJObDNTaXFDU3RxMjNJMVZaIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m_b4akLPX2gof6pBKsPq9l59pAmSU0yLb5eCzCx3jCg
 @path = /api/meeting
 
 
@@ -52,3 +52,14 @@ Authorization: Bearer {{accessToken}}
 }
 
 
+###meeting call invoke
+
+post {{hostname}}{{path}}/voice-call/actions/invoke
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "from":"2",
+    "to":"2",
+    "channel" : "test"
+}

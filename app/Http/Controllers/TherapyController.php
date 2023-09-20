@@ -408,7 +408,7 @@ class TherapyController extends Controller
                 if(!$request->has('search')){ $request->input('search', ''); } 
                 
                 $therpies =user_therapy::with('therapy_working_hours')->with('therapy__qualifications')
-                    ->select('users.id as user_id','users.avatar_url','users.address','users.city','users.nic as nic_no', 'users.name', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration')
+                    ->select('users.id as user_id','users.avatar_url','users.address','users.nic as nic_no', 'users.name', 'users.email', 'users.phone', 'user_therapies.id as therapy_Id', 'user_therapies.hourly_rate','user_therapies.working_type','user_therapies.paying_type','user_therapies.session_rate','user_therapies.session_duration','user_therapies.city')
                     ->join('users', 'users.id', '=', 'user_therapies.user_id')
                     ->where('users.role', '=', 'therapy')
                     ->where('users.name', 'LIKE', '%' . $request->get('search'). '%')
