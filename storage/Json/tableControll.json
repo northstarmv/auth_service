@@ -57,11 +57,10 @@
             }
         }
     },
-    
     "5": {
-        "table": "product_brand",
+        "table": "products",
         "deleteAccess": {
-            "1": {}
+            "admin": {}
         },
         "statusAccess": {
             "1": {

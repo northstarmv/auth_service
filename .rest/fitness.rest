@@ -1,0 +1,13 @@
+@hostname = http://54.255.237.142:8081
+# @hostname = https://finder.similater.com/car
+@accessToken = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTMuMjE1LjE3NS4xNTA6ODA4MS9hcGkvbG9naW4iLCJpYXQiOjE2OTUyMzE5ODQsImV4cCI6MTcyNDcyMzE5ODQsIm5iZiI6MTY5NTIzMTk4NCwianRpIjoiY1Q2cDVxUVUxM3NIUFIwOCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.v2sFJISTZV_M-7VKGoeuhP0L8Wm7xr7IPPyH0Bf77zQ
+@path = /api/fitness
+
+
+
+### my meetings
+
+get {{hostname}}{{path}}/2/fitness-data
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
